@@ -7,7 +7,7 @@ const Feedback = ({
   isSuccess = false,
   successMessage = "Correct!",
   failureMessage = "Sorry!",
-  disableNext = false,
+  isFinished = false,
   handleNextButtonClick = () => {},
 }) => {
   const getMessage = () => {
@@ -20,7 +20,11 @@ const Feedback = ({
 
   if (shouldDisplay) {
     return (
-      <div className="feedback-container">
+      <div
+        className={classNames("feedback-container", {
+          "feedback-only": isFinished,
+        })}
+      >
         <div
           className={classNames("feedback-message", {
             "success-message": isSuccess,
@@ -29,18 +33,16 @@ const Feedback = ({
         >
           {getMessage()}
         </div>
-        <div>
-          <button
-            className="next-btn"
-            onClick={handleNextButtonClick}
-            disabled={disableNext}
-          >
-            <span>
-              Next &nbsp;
-              <i className="fas fa-arrow-right" />
-            </span>
-          </button>
-        </div>
+        {!isFinished && (
+          <div className="center-cell">
+            <button className="next-btn" onClick={handleNextButtonClick}>
+              <span>
+                Next &nbsp;
+                <i className="fas fa-arrow-right" />
+              </span>
+            </button>
+          </div>
+        )}
       </div>
     );
   }

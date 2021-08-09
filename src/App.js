@@ -64,7 +64,7 @@ function App() {
         shouldDisplay={userSelection !== null}
         isSuccess={userSelection?.chosen === userSelection?.correct}
         handleNextButtonClick={nextQuestionHandler}
-        disableNext={finished}
+        isFinished={finished}
       />
     </div>
   );

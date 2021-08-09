@@ -9,3 +9,9 @@ body {
   position: relative;
   overflow: hidden;
 }
+
+.center-cell {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
